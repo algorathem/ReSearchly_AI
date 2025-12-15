@@ -1,0 +1,43 @@
+[
+  {
+    "id": "research",
+    "config": {
+      "steps\\status-api.step.ts": {
+        "x": 0,
+        "y": 0
+      },
+      "steps\\search-web.step.ts": {
+        "x": 700,
+        "y": 267
+      },
+      "steps\\research-api.step.ts": {
+        "x": 0,
+        "y": 223
+      },
+      "steps\\report-api.step.ts": {
+        "x": 14,
+        "y": 446
+      },
+      "steps\\generate-queries.step.ts": {
+        "x": 350,
+        "y": 257
+      },
+      "steps\\follow-up-research.step.ts": {
+        "x": 1702,
+        "y": 335
+      },
+      "steps\\extract-content.step.ts": {
+        "x": 1002,
+        "y": 180
+      },
+      "steps\\compile-report.step.ts": {
+        "x": 1702,
+        "y": 180
+      },
+      "steps\\analyze-content.step.ts": {
+        "x": 1352,
+        "y": 180
+      }
+    }
+  }
+]
