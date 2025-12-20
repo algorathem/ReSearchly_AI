@@ -1,26 +1,5 @@
 [
   {
-    "id": "basic-tutorial",
-    "config": {
-      "src\\petstore\\state_audit_cron_step.py": {
-        "x": 225,
-        "y": 0
-      },
-      "src\\petstore\\process_food_order_step.py": {
-        "x": 225,
-        "y": 219
-      },
-      "src\\petstore\\notification_step.py": {
-        "x": 575,
-        "y": 141
-      },
-      "src\\petstore\\api_step.py": {
-        "x": 0,
-        "y": 60
-      }
-    }
-  },
-  {
     "id": "research",
     "config": {
       "steps\\user_log_api_step.py": {
@@ -54,6 +33,27 @@
       "steps\\report_feedback_api_step.py": {
         "x": 0,
         "y": 1521
+      }
+    }
+  },
+  {
+    "id": "basic-tutorial",
+    "config": {
+      "steps\\petstore_backup\\state_audit_cron_step.py": {
+        "x": 0,
+        "y": 0
+      },
+      "steps\\petstore_backup\\process_food_order_step.py": {
+        "x": 0,
+        "y": 0
+      },
+      "steps\\petstore_backup\\notification_step.py": {
+        "x": 0,
+        "y": 0
+      },
+      "steps\\petstore_backup\\api_step.py": {
+        "x": 0,
+        "y": 0
       }
     }
   }
