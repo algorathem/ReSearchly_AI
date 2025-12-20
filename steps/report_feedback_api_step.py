@@ -1,7 +1,7 @@
 import json
 import os
 import sys
-sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
+sys.path.insert(0, os.getcwd())
 from src.services.openai_service import OpenAIService
 
 config = {
@@ -64,8 +64,7 @@ Provide feedback in JSON format with the following structure:
   ]
 }}"""
         
-        response = await openai.client.chat.completions.create(
-            model=openai.model,
+        response = await openai.create_completion(
             messages=[
                 {"role": "system", "content": "You are an expert research reviewer. Provide constructive, specific feedback on research reports."},
                 {"role": "user", "content": prompt}

@@ -1,7 +1,7 @@
 import json
 import os
 import sys
-sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
+sys.path.insert(0, os.getcwd())
 from src.services.openai_service import OpenAIService
 
 config = {
@@ -42,8 +42,7 @@ async def handler(req, context):
         
         prompt = f"Validate this AI response against the source and constraints:\n\nAI Response: {ai_response}\n\nConstraints: {json.dumps(constraints)}\n\nProvide a validation report with confidence score and flagged inconsistencies."
         
-        response = await openai.client.chat.completions.create(
-            model=openai.model,
+        response = await openai.create_completion(
             messages=[
                 {"role": "system", "content": "You are a validation assistant. Check accuracy and consistency."},
                 {"role": "user", "content": prompt}

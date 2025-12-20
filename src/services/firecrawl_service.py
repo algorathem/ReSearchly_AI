@@ -4,13 +4,22 @@ from firecrawl import FirecrawlApp
 class FirecrawlService:
     def __init__(self):
         api_key = os.getenv('FIRECRAWL_API_KEY')
-        if not api_key:
-            raise ValueError("API key not set")
-        
-        self.app = FirecrawlApp(api_key=api_key)
+        if not api_key or api_key == "dummy-key":
+            self.app = None
+        else:
+            self.app = FirecrawlApp(api_key=api_key)
     
     async def search(self, query, logger):
         """Search for sources using Firecrawl"""
+        if self.app is None:
+            # Return mock response for testing
+            return [
+                {
+                    'title': f'Mock result for: {query}',
+                    'url': f'https://example.com/{query.replace(" ", "-")}',
+                    'snippet': f'This is a mock search result for the query: {query}. Please set FIRECRAWL_API_KEY for real results.',
+                }
+            ]
         try:
             logger.info('Searching with Firecrawl', {'query': query})
             results = self.app.search(query)
@@ -31,6 +40,9 @@ class FirecrawlService:
     
     async def extract_content(self, url, logger):
         """Extract content from a URL using Firecrawl"""
+        if self.app is None:
+            # Return mock response for testing
+            return f"This is mock extracted content from {url}. Please set FIRECRAWL_API_KEY for real content extraction."
         try:
             logger.info('Extracting content with Firecrawl', {'url': url})
             result = self.app.scrape_url(url)

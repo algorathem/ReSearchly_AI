@@ -1,7 +1,7 @@
 import json
 import os
 import sys
-sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
+sys.path.insert(0, os.getcwd())
 from src.services.firecrawl_service import FirecrawlService
 from src.services.openai_service import OpenAIService
 
@@ -58,8 +58,7 @@ async def handler(req, context):
             prompt = f"Respond to: {user_message}\n\nContent: {content[:5000]}"
         
         # For simplicity, use a basic chat completion
-        response = await openai.client.chat.completions.create(
-            model=openai.model,
+        response = await openai.create_completion(
             messages=[
                 {"role": "system", "content": "You are a helpful research assistant."},
                 {"role": "user", "content": prompt}
