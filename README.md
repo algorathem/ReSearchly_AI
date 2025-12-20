@@ -1,23 +1,38 @@
-Einstyn – AI Research Assistant
+# Einstyn – AI Research Assistant
 
-Open your browser at http://localhost:3000.
+![GitHub Workflow Status](https://img.shields.io/badge/build-passing-brightgreen)
+![GitHub Repo Size](https://img.shields.io/github/repo-size/yourusername/lumina)
+![License](https://img.shields.io/badge/license-MIT-blue)
 
-Enter a research query in the left panel.
+## About
 
-Click sources to interact in the center pane:
+**Einstyn** is an AI-powered research assistant designed to help researchers quickly find, validate, summarize, and replicate sources. It combines intelligent querying, structured summaries, and optional implementation guidance for experiments.
 
-Get a summary
+---
 
-Request explanations
+## Features
 
-Request implementation guidance
+- Finds relevant research sources for a query
+- Provides digestible summaries in a chat-like interface
+- Explains implementation steps for replicating experiments
+- Supports quick actions on sources (drag, click, request implementation)
+- Modular pipeline using Motia flows and steps
 
-Optional: drag sources to quick actions or generate structured reports.
+---
 
-How We Used Motia
+## Tech Stack
 
-Registered custom flows for research tasks.
+- **Backend:** Python + Motia
+- **Frontend:** React
+- **AI/ML:** OpenAI API, Motia LLM flows
+- **Database:** PostgreSQL 
+- **Architecture:** Modular pipeline: Query → Validation → Summarization → Action
 
-Created steps for querying sources, validating information, and summarizing.
+---
 
-Leveraged Motia’s plugin system for modular and reusable pipeline components.
+## Installation
+
+1. Clone the repo:
+```bash
+git clone https://github.com/yourusername/lumina.git
+cd lumina
