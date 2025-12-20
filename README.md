@@ -1,13 +1,15 @@
-# Einstyn – AI Research Assistant
+# ReSearchlyAI
 
 ![GitHub Workflow Status](https://img.shields.io/badge/build-passing-brightgreen)
 ![GitHub Repo Size](https://img.shields.io/github/repo-size/yourusername/lumina)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
 ## About
+ResearchlyAI is an AI-powered research assistant that streamlines the entire research workflow. Ask a question and it fetches trusted sources, scores their reliability, and explains why so you get ideas you can trust.
 
-**Einstyn** is an AI-powered research assistant designed to help researchers quickly find, validate, summarize, and replicate sources. It combines intelligent querying, structured summaries, and optional implementation guidance for experiments.
+The center pane allows you to interact with each source, digesting complex papers without reading every word. Curious about replicating experiments? Our explainer agent provides step-by-step instructions including pseudocode.
 
+Finally, draft your conclusions in the report editor with dark and light modes for comfort. Powered by the Motia framework, ResearchlyAI unifies APIs, workflows, and AI agents into a seamless backend solution for smarter research.
 ---
 
 ## Features
@@ -30,9 +32,4 @@
 
 ---
 
-## Installation
-
-1. Clone the repo:
-```bash
-git clone https://github.com/yourusername/lumina.git
-cd lumina
+## Demo
