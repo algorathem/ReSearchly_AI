@@ -2,14 +2,15 @@ import json
 import os
 import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
+from src.services.database_service import database_service
 
 config = {
     'type': 'api',
     'name': 'Source Mode API',
     'description': 'API endpoint for toggling source interaction modes',
-    'path': '/api/v1/source/mode',
+    'path': '/api/source/:sourceId/mode',
     'method': 'POST',
-    'emits': [],
+    'emits': ['mode-changed'],  # Emit event for workflow refresh
     'flows': ['research'],
 }
 
@@ -17,8 +18,8 @@ async def handler(req, context):
     """Handler for source mode toggle API"""
     logger = context.logger
     
-    query_params = req.get('queryParams', {})
-    source_id = query_params.get('sourceId', '')
+    path_params = req.get('pathParams', {})
+    source_id = path_params.get('sourceId', '')
     body = req.get('body', {})
     mode = body.get('mode', 'summary')  # summary, explanation, implementation
     
@@ -45,15 +46,30 @@ async def handler(req, context):
     })
     
     try:
-        # Here you could emit an event to update the workflow or store the mode
-        # For now, just acknowledge the mode change
+        # Validate that the source exists
+        source = await database_service.get_source_by_id(int(source_id))
+        if not source:
+            return {
+                'status': 404,
+                'body': {
+                    'message': 'Source not found'
+                },
+            }
+        
+        # Here you could store the mode preference in the database
+        # For now, just acknowledge and emit event for workflow refresh
         
         return {
             'status': 200,
             'body': {
                 'message': 'Mode updated successfully',
                 'sourceId': source_id,
-                'mode': mode
+                'mode': mode,
+                'source': {
+                    'id': source['id'],
+                    'title': source['title'],
+                    'currentMode': mode
+                }
             },
         }
     except Exception as error:
