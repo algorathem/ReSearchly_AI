@@ -20,7 +20,22 @@ async def handler(req, context):
     
     path_params = req.get('pathParams', {})
     source_id = path_params.get('sourceId', '')
-    body = req.get('body', {})
+    body_raw = req.get('body', '{}')
+    
+    # Parse JSON body if it's a string
+    if isinstance(body_raw, str):
+        try:
+            body = json.loads(body_raw)
+        except json.JSONDecodeError:
+            return {
+                'status': 400,
+                'body': {
+                    'error': 'Invalid JSON in request body'
+                },
+            }
+    else:
+        body = body_raw
+    
     mode = body.get('mode', 'summary')  # summary, explanation, implementation
     
     if not source_id:

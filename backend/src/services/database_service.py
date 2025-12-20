@@ -90,6 +90,8 @@ class DatabaseService:
                     'type': row[7],
                     'created_at': row[8]
                 })
+            
+            return results
     async def get_source_by_id(self, source_id: int) -> Dict[str, Any]:
         """Get a source by its ID"""
         with self.get_connection() as conn:

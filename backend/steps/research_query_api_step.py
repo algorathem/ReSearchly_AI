@@ -19,7 +19,22 @@ async def handler(req, context):
     """Handler for research query API"""
     logger = context.logger
     
-    body = req.get('body', {})
+    body_raw = req.get('body', '{}')
+    
+    # Parse JSON body if it's a string
+    if isinstance(body_raw, str):
+        try:
+            body = json.loads(body_raw)
+        except json.JSONDecodeError:
+            return {
+                'status': 400,
+                'body': {
+                    'error': 'Invalid JSON in request body'
+                },
+            }
+    else:
+        body = body_raw
+    
     query = body.get('query', '')
     filters = body.get('filters', {})
     

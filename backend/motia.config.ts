@@ -4,18 +4,13 @@ import { defineConfig } from '@motiadev/core'
 // import observabilityPlugin from '@motiadev/plugin-observability/plugin'
 // import statesPlugin from '@motiadev/plugin-states/plugin'
 // import bullmqPlugin from '@motiadev/plugin-bullmq/plugin'
+import express from 'express'
 
 export default defineConfig({
   plugins: [], // endpointPlugin, logsPlugin, statesPlugin, bullmqPlugin
   // Disable states and Redis to prevent connection issues
   states: {
     disabled: true
-  },
-  // Disable Redis to prevent connection issues
-  redis: {
-    disabled: true,
-    host: 'invalid-host',
-    port: 9999
   },
   // Add stream authentication configuration to fix socket authorization errors
   streamAuth: {
